@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import TodoList from "./TodoList";
 import Grid from "@material-ui/core/Grid";
 
 export default function TodoApp() {
@@ -11,7 +12,7 @@ export default function TodoApp() {
         { id: 2, task: "wash car", completed: true },
         { id: 3, task: "grow beard", completed: false },
     ];
-    const { todos, setTodos } = useState(initialTodos);
+    const [todos, setTodos] = useState(initialTodos);
     return (
         <Paper style={{
             padding: 0,
