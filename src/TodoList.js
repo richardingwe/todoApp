@@ -6,7 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import Todo from "./Todo";
 
 
-export default function TodoList({ todos, removeTodo, toggleTodo }) {
+export default function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
     return (
         <Paper>
             <List>
@@ -19,6 +19,7 @@ export default function TodoList({ todos, removeTodo, toggleTodo }) {
                             completed={todo.completed}
                             removeTodo={removeTodo}
                             toggleTodo={toggleTodo}
+                            editTodo={editTodo}
                         />
                         <Divider />
                     </>
