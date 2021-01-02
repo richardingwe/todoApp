@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
@@ -9,12 +9,13 @@ import Grid from "@material-ui/core/Grid";
 import { v4 as uuid } from "uuid";
 
 export default function TodoApp() {
-    const initialTodos = [
-        { id: uuid(), task: "clean fish tank", completed: false },
-        { id: uuid(), task: "wash car", completed: true },
-        { id: uuid(), task: "grow beard", completed: false },
-    ];
+    const initialTodos = JSON.parse(window.localStorage.getItem("todos")) || [];
     const [todos, setTodos] = useState(initialTodos);
+
+    useEffect(() => {
+        window.localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
+
     const addTodo = newTodotext => {
         setTodos([...todos, { id: uuid(), task: newTodotext, completed: false }]);
     };
@@ -38,6 +39,7 @@ export default function TodoApp() {
         );
         setTodos(updatedTodos);
     };
+
 
     return (
         <Paper style={{
